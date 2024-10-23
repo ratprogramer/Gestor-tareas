@@ -28,10 +28,14 @@ const App = () => {
     )
   }
 
+  const deleteTask = (id) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+  };
+  
   return (
     <>
       <Header addTask={addTask}></Header>
-      <TaskList tasks={tasks} editTask={editTask}></TaskList>
+      <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask}></TaskList>
     </>
   )
 }
