@@ -54,6 +54,7 @@ const App = () => {
           <div className='main'>
             <Routes>
               <Route path='/' element={<Navigate to="/all"/>}/>
+              <Route path='/Gestor-tareas' element={<Navigate to="/all"/>}/>
               <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="all"/>}/>
               <Route path='/pending' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="pending"/> : <Navigate to="/all"/>}/>
               <Route path='/completed' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="completed"/> : <Navigate to="/all"/>}/>
