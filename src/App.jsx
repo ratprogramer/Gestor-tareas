@@ -41,17 +41,21 @@ const App = () => {
     )
   }
   
+  const clearCompleted = () => {
+    setTasks(prevTasks => prevTasks.filter(task => !task.completed));
+  };
+
   return (
     <>
       <Router>
         <Header addTask={addTask}></Header>
         <Routes>
           <Route path='/' element={<Navigate to="/all"/>}/>
-          <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="all"/>}/>
-          <Route path='/pending' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="pending"/>}/>
-          <Route path='/completed' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="completed"/>}/>
+          <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="all"/>}/>
+          <Route path='/pending' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="pending"/> : <Navigate to="/all"/>}/>
+          <Route path='/completed' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="completed"/> : <Navigate to="/all"/>}/>
         </Routes>
-        <Footer></Footer>
+        <Footer tasks={tasks} clearCompleted={clearCompleted}></Footer>
       </Router>
     </>
   )
