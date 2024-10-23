@@ -17,7 +17,7 @@ export function Header( { addTask } ) {
             <p className='title'>My Day</p>
             <p className='sub-title'>All your tasks in one place</p>
         </div>
-        <input autoFocus type="text" placeholder="Type new todo" value={newTask} onKeyDown={handleKey} onChange={(e) => {setNewTask(e.target.value)}} />
+        <input className='new-input' autoFocus type="text" placeholder="Type new todo" value={newTask} onKeyDown={handleKey} onChange={(e) => {setNewTask(e.target.value)}} />
     </div>
   )
 }

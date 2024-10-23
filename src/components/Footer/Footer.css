@@ -1,0 +1,45 @@
+.footer{
+    display: flex;
+    font-size: 1.4rem;
+    margin-left: 20px;
+    margin-bottom: 23px;
+    justify-content: space-between;
+    padding-right: 60px;
+}
+
+.btn-navegador{
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 6px;
+    color: black;
+}
+.navegador{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-navegador:hover{
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.active {
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 6px;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.clear-completed{
+    border: none;
+    text-decoration: none;
+    padding: 5px;
+    background-color: white;
+    border-radius: 6px;
+    color: black;
+    font-size: 1.4rem;
+}
+.clear-completed:hover{
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}

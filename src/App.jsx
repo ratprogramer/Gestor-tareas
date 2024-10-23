@@ -47,16 +47,21 @@ const App = () => {
 
   return (
     <>
-      <Router>
-        <Header addTask={addTask}></Header>
-        <Routes>
-          <Route path='/' element={<Navigate to="/all"/>}/>
-          <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="all"/>}/>
-          <Route path='/pending' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="pending"/> : <Navigate to="/all"/>}/>
-          <Route path='/completed' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="completed"/> : <Navigate to="/all"/>}/>
-        </Routes>
-        <Footer tasks={tasks} clearCompleted={clearCompleted}></Footer>
-      </Router>
+      <div className='app-container'>
+        <div className='fondo'></div>
+        <Router>
+          <Header addTask={addTask}></Header>
+          <div className='main'>
+            <Routes>
+              <Route path='/' element={<Navigate to="/all"/>}/>
+              <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="all"/>}/>
+              <Route path='/pending' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="pending"/> : <Navigate to="/all"/>}/>
+              <Route path='/completed' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="completed"/> : <Navigate to="/all"/>}/>
+            </Routes>
+            <Footer tasks={tasks} clearCompleted={clearCompleted}></Footer>
+          </div>
+        </Router>
+      </div>
     </>
   )
 }
