@@ -1,5 +1,5 @@
 import { TaskList } from './components/TaskList/TaskList'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Navigate } from 'react-router-dom'
 import { Header } from './components/Header/Header'
 import { Footer } from './components/Footer/Footer'
 import './App.css'
@@ -52,13 +52,13 @@ const App = () => {
         <Router>
           <Header addTask={addTask}></Header>
           <div className='main'>
-            <Routes>
+            <Switchwitch>
               <Route path='/' element={<Navigate to="/all"/>}/>
               <Route path='/Gestor-tareas' element={<Navigate to="/all"/>}/>
               <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="all"/>}/>
               <Route path='/pending' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="pending"/> : <Navigate to="/all"/>}/>
               <Route path='/completed' element= {tasks.length > 0 ? <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}  filter="completed"/> : <Navigate to="/all"/>}/>
-            </Routes>
+            </Switchwitch>
             <Footer tasks={tasks} clearCompleted={clearCompleted}></Footer>
           </div>
         </Router>
