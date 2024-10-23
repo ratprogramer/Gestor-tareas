@@ -19,10 +19,19 @@ const App = () => {
       ...prevTasks, {id: Date.now().toString(), title: task, completed: false}
     ])
   }
+
+  const editTask = (id, newTitle) => {
+    setTasks(prevTasks =>
+      prevTasks.map(task => 
+        task.id === id ? { ...task, title: newTitle } : task
+      )
+    )
+  }
+
   return (
     <>
       <Header addTask={addTask}></Header>
-      <TaskList tasks={tasks}></TaskList>
+      <TaskList tasks={tasks} editTask={editTask}></TaskList>
     </>
   )
 }
