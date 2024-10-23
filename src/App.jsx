@@ -16,12 +16,13 @@ const App = () => {
 
   const addTask = (task) => {
     setTasks(prevTasks => [
-      ...prevTasks, {id: Date.now().toString(), taskTitle: task, completed: false}
+      ...prevTasks, {id: Date.now().toString(), title: task, completed: false}
     ])
   }
   return (
     <>
       <Header addTask={addTask}></Header>
+      <TaskList tasks={tasks}></TaskList>
     </>
   )
 }
