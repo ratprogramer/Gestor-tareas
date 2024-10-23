@@ -1,4 +1,5 @@
 import { TaskList } from './components/TaskList/TaskList'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { Header } from './components/Header/Header'
 import { Footer } from './components/Footer/Footer'
 import './App.css'
@@ -42,8 +43,16 @@ const App = () => {
   
   return (
     <>
-      <Header addTask={addTask}></Header>
-      <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}></TaskList>
+      <Router>
+        <Header addTask={addTask}></Header>
+        <Routes>
+          <Route path='/' element={<Navigate to="/all"/>}/>
+          <Route path='/all' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="all"/>}/>
+          <Route path='/pending' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="pending"/>}/>
+          <Route path='/completed' element= {<TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete} filter="completed"/>}/>
+        </Routes>
+        <Footer></Footer>
+      </Router>
     </>
   )
 }
