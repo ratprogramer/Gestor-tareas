@@ -29,13 +29,21 @@ const App = () => {
   }
 
   const deleteTask = (id) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
-  };
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+  }
+
+  const toggleComplete = (id) => {
+    setTasks(prevTasks =>
+      prevTasks.map(task => 
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    )
+  }
   
   return (
     <>
       <Header addTask={addTask}></Header>
-      <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask}></TaskList>
+      <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleComplete={toggleComplete}></TaskList>
     </>
   )
 }
